@@ -2,21 +2,29 @@ package HandsOn_Lab;
 
 import java.util.ArrayList;
 
-class ListLoader{
-	ArrayList<Integer>L=new ArrayList<Integer>();
-	void loadList(Integer startNumber, Integer lastNumber){
-		for(Integer i=startNumber;i<=lastNumber;i++) {
-			L.add(i);
-		}
-		
-	}
+ class LoaderThread implements Runnable{
+int startNo,lastNo;
+LoaderThread(int sno,int lno){
+	startNo=sno;
+	lastNo=lno;
 }
-public class Lab_24_11_Problem1 {
-public static void main(String[] args) {
-	double f=System.currentTimeMillis();
-	ListLoader l=new ListLoader();
-	l.loadList(0, 100000);
-	double f2=System.currentTimeMillis();
-	System.out.println("Response Time="+(f2-f)+" milisecons");
+public void run() {
+	ArrayList<Integer>L=new ArrayList<Integer>();
+	for(Integer i=startNo;i<=lastNo;i++) {
+		L.add(i);
+	}
+	for(int j:L)
+		System.out.println(j);
+}
+	public static void main(String[] args) throws InterruptedException{
+	Runnable r=new LoaderThread(1, 100);
+	Thread t=new Thread(r);
+	int a=(int)System.currentTimeMillis();//before executing time taken
+	System.out.println("Response Time Before Load List ="+a+" millis");
+	t.start();
+	t.join();
+	int b=(int)System.currentTimeMillis();
+	System.out.println("Respone tiem after executing loadlist="+b);
+	System.out.println("Respone tiem= "+(b-a));
 }
 }
