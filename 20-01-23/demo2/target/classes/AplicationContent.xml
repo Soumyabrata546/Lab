@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ https://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/data/jpa
+ https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+ 
+ <bean id="X" class="com.examplespring.entity.Student">
+<constructor-arg name="id" value="101"/>
+<constructor-arg name="sname" value="pallabi"/>
+<constructor-arg name="email" value="pallabi@gmail.com"/>
+<constructor-arg name="phone" value="456889832"/>
+</bean>
+
+<bean id="Y" class="com.examplespring.entity.Person">
+ <property name="name" value="Soumya">
+ </property>
+</bean>
+<bean id="Z" class="com.examplespring.entity.Employee">
+ <constructor-arg type="int" value="10"/>
+ 
+</bean>
+<bean id="add" class="com.Spring.entity.Address">
+ <constructor-arg  value="Kolkata"/>
+ <constructor-arg  value="WB"/>
+  <constructor-arg  value="India"/>
+ </bean>
+ <bean id="emp" class="com.Spring.entity.Emp1">
+ <constructor-arg  value="10"/>
+ <constructor-arg  value="Nisha"/>
+  <constructor-arg> <ref bean="add"/></constructor-arg>
+ </bean>
+<bean id="mcq" class="com.examplespring.entity.MCQ">
+ <constructor-arg  value="010"/>
+  <constructor-arg  value="define spring?"/>
+  <constructor-arg>
+  <list>
+  <value>Spring is a framework</value>
+  <value>Spring is a collection</value>
+  <value>Spring is a list</value>
+  </list>
+  </constructor-arg>
+</bean>
+</beans>
